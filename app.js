@@ -12,8 +12,7 @@ const bodyParser = require('body-parser')
 //do the request parsing 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(adminRoutes);
-
+app.use('/admin',adminRoutes);
 app.use(shopRoutes)
 
 //sending errors
