@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", (req, res, next) => {
    const products = adminData.products;
    // pass in data to pug template
-   res.render('shop', { prods: products });
+   res.render('shop', { prods: products, path: '/', pageTitle:'Shop' });
 });
 
 

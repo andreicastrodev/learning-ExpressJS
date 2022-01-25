@@ -8,7 +8,7 @@ const products = [];
 
 
 router.get("/add-product", (req, res, next) => {
-    res.render('add-products')
+    res.render('add-products', { pageTitle: 'Products', path:'/admin/add-product' })
     // dont call next if you are sending a response
 });
 
