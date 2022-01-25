@@ -3,7 +3,7 @@ const express = require('express')
 const app = express();
 const path = require('path')
 //routes
-const adminData = require('./routes/admin')
+const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 const bodyParser = require('body-parser');
 const { dirname } = require('path');
@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 app.set('views', 'views')
 // exposing data
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes)
 
 //sending errors
