@@ -5,6 +5,7 @@ const path = require('path')
 //routes
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
+const errorController = require('./controllers/errors')
 const bodyParser = require('body-parser');
 const { dirname } = require('path');
 
@@ -21,9 +22,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes)
 
 //sending errors
-app.use((req, res, next) => {
-    res.render('404');
-})
+app.use(errorController.error404)
 
 
 app.listen(3000)

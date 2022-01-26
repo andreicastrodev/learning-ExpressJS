@@ -1,4 +1,6 @@
-const products = [];
+const Product = require('../models/product');
+
+
 
 exports.getAddProduct = (req, res, next) => {
     res.render('add-products', { pageTitle: 'Products', path: '/admin/add-product' })
@@ -6,14 +8,14 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 exports.postAddProduct = (req, res, next) => {
-    products.push({
-        title: req.body.title,
-        docTitle: 'Shop'
-    });
+    const product = new Product(req.body.title);
+    product.save();
     res.redirect('/');
 }
 
 exports.getProduct = (req, res, next) => {
+    Product.fetchAll((products) => {
+        res.render('shop', { prods: products, path: '/', pageTitle: 'Shop' });
+    });
     // pass in data to pug template
-    res.render('shop', { prods: products, path: '/', pageTitle: 'Shop' });
 };
